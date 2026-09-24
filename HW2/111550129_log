@@ -1,0 +1,77 @@
+==27482== Memcheck, a memory error detector
+==27482== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==27482== Using Valgrind-3.20.0 and LibVEX; rerun with -h for copyright info
+==27482== Command: ./memleak
+==27482== Parent PID: 18369
+==27482== 
+==27482== Invalid write of size 4                                                        ## error 1: invalid write
+==27482==    at 0x1091C0: main (memleak.c:49)
+==27482==  Address 0x4a85068 is 0 bytes after a block of size 40 alloc'd
+==27482==    at 0x484684F: malloc (vg_replace_malloc.c:393)
+==27482==    by 0x10919E: main (memleak.c:46)
+==27482== 
+==27482== Invalid read of size 4                                                         ## error 2: invalid read
+==27482==    at 0x1091ED: main (memleak.c:54)
+==27482==  Address 0x4a85068 is 0 bytes after a block of size 40 alloc'd
+==27482==    at 0x484684F: malloc (vg_replace_malloc.c:393)
+==27482==    by 0x10919E: main (memleak.c:46)
+==27482== 
+==27482== Conditional jump or move depends on uninitialised value(s)
+==27482==    at 0x48DA0CB: __printf_buffer (vfprintf-process-arg.c:58)
+==27482==    by 0x48DB73A: __vfprintf_internal (vfprintf-internal.c:1544)
+==27482==    by 0x48D01B2: printf (printf.c:33)
+==27482==    by 0x109214: main (memleak.c:57)
+==27482== 
+==27482== Use of uninitialised value of size 8                                           ## error 3: Use of Uninitialised Value
+==27482==    at 0x48CF0BB: _itoa_word (_itoa.c:183)
+==27482==    by 0x48D9C9B: __printf_buffer (vfprintf-process-arg.c:155)
+==27482==    by 0x48DB73A: __vfprintf_internal (vfprintf-internal.c:1544)
+==27482==    by 0x48D01B2: printf (printf.c:33)
+==27482==    by 0x109214: main (memleak.c:57)
+==27482== 
+==27482== Conditional jump or move depends on uninitialised value(s)
+==27482==    at 0x48CF0CC: _itoa_word (_itoa.c:183)
+==27482==    by 0x48D9C9B: __printf_buffer (vfprintf-process-arg.c:155)
+==27482==    by 0x48DB73A: __vfprintf_internal (vfprintf-internal.c:1544)
+==27482==    by 0x48D01B2: printf (printf.c:33)
+==27482==    by 0x109214: main (memleak.c:57)
+==27482== 
+==27482== Conditional jump or move depends on uninitialised value(s)
+==27482==    at 0x48D9D85: __printf_buffer (vfprintf-process-arg.c:186)
+==27482==    by 0x48DB73A: __vfprintf_internal (vfprintf-internal.c:1544)
+==27482==    by 0x48D01B2: printf (printf.c:33)
+==27482==    by 0x109214: main (memleak.c:57)
+==27482== 
+==27482== Argument 'size' of function malloc has a fishy (possibly negative) value: -40   ## error 4: Fishy malloc Argument
+==27482==    at 0x484684F: malloc (vg_replace_malloc.c:393)
+==27482==    by 0x109220: main (memleak.c:61)
+==27482== 
+==27482== Invalid free() / delete / delete[] / realloc()                                  ## error 5: Invalid free()
+==27482==    at 0x48490C4: free (vg_replace_malloc.c:884)
+==27482==    by 0x10924A: main (memleak.c:65)
+==27482==  Address 0x4a854f0 is 0 bytes inside a block of size 40 free'd
+==27482==    at 0x48490C4: free (vg_replace_malloc.c:884)
+==27482==    by 0x10923E: main (memleak.c:64)
+==27482==  Block was alloc'd at
+==27482==    at 0x484684F: malloc (vg_replace_malloc.c:393)
+==27482==    by 0x10922E: main (memleak.c:63)
+==27482== 
+==27482== 
+==27482== HEAP SUMMARY:
+==27482==     in use at exit: 40 bytes in 1 blocks
+==27482==   total heap usage: 3 allocs, 3 frees, 1,104 bytes allocated
+==27482== 
+==27482== 40 bytes in 1 blocks are definitely lost in loss record 1 of 1                  ## error 6: Memory Leak
+==27482==    at 0x484684F: malloc (vg_replace_malloc.c:393)
+==27482==    by 0x10919E: main (memleak.c:46)
+==27482== 
+==27482== LEAK SUMMARY:
+==27482==    definitely lost: 40 bytes in 1 blocks
+==27482==    indirectly lost: 0 bytes in 0 blocks
+==27482==      possibly lost: 0 bytes in 0 blocks
+==27482==    still reachable: 0 bytes in 0 blocks
+==27482==         suppressed: 0 bytes in 0 blocks
+==27482== 
+==27482== Use --track-origins=yes to see where uninitialised values come from
+==27482== For lists of detected and suppressed errors, rerun with: -s
+==27482== ERROR SUMMARY: 9 errors from 9 contexts (suppressed: 0 from 0)

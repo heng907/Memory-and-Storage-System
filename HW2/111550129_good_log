@@ -1,0 +1,25 @@
+==56647== Cachegrind, a cache and branch-prediction profiler
+==56647== Copyright (C) 2002-2017, and GNU GPL'd, by Nicholas Nethercote et al.
+==56647== Using Valgrind-3.20.0 and LibVEX; rerun with -h for copyright info
+==56647== Command: ./good
+==56647== Parent PID: 18369
+==56647== 
+--56647-- warning: L3 cache found, using its data for the LL simulation.
+--56647-- warning: specified LL cache: line_size 64  assoc 12  total_size 37,748,736
+--56647-- warning: simulated LL cache: line_size 64  assoc 18  total_size 37,748,736
+==56647== 
+==56647== I   refs:      30,193,736
+==56647== I1  misses:         1,089
+==56647== LLi misses:         1,073
+==56647== I1  miss rate:       0.00%
+==56647== LLi miss rate:       0.00%
+==56647== 
+==56647== D   refs:      14,058,814  (12,045,511 rd   + 2,013,303 wr)
+==56647== D1  misses:       126,552  (    63,725 rd   +    62,827 wr)
+==56647== LLd misses:        63,851  (     1,042 rd   +    62,809 wr)
+==56647== D1  miss rate:        0.9% (       0.5%     +       3.1%  )
+==56647== LLd miss rate:        0.5% (       0.0%     +       3.1%  )
+==56647== 
+==56647== LL refs:          127,641  (    64,814 rd   +    62,827 wr)
+==56647== LL misses:         64,924  (     2,115 rd   +    62,809 wr)
+==56647== LL miss rate:         0.1% (       0.0%     +       3.1%  )
