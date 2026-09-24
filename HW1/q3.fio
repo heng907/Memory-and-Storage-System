@@ -1,0 +1,17 @@
+[global]
+filename=/tmp/testfile
+bs=4k
+direct=1
+stonewall
+
+[forward_write]
+rw=write
+size=64m
+
+[backward_write]
+rw=write
+size=64m
+offset=63m
+bs=4k
+io_size=64m
+offset_increment=-4k

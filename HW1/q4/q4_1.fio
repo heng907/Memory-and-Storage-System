@@ -1,0 +1,13 @@
+[global]
+filename=/tmp/testfile
+bs=4k
+size=64m
+stonewall
+
+[buffered_read]
+rw=randread
+direct=0
+
+[nonbuffered_read]
+rw=randread
+direct=1
